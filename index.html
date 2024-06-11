@@ -1041,6 +1041,12 @@
       transform: translate(0px, 0px);
     }
 
+    @media print {
+      #unshow_button {
+        display: none;
+      }
+    }
+
     .image044-76cf7a6d1e75 {
       position: absolute;
       left: 0px;
@@ -1294,24 +1300,25 @@
   </div>
   <script>
     function downloadPdf() {
+    window.print()
       let photo;
-      const item = document.getElementById('content_body')
+      // const item = document.getElementById('content_body')
       
-      var opt = {
-        margin: 0,
-        filename: "curriculum.pdf",
-        html2canvas: {
-          scale: 2,
-          quality: 0.98
-        },
-        jsPDF: {
-          unit: "in",
-          format: "letter",
-          orientation: "portrait",
-        },
-      }
+      // var opt = {
+      //   margin: 0,
+      //   filename: "curriculum.pdf",
+      //   html2canvas: {
+      //     scale: 2,
+      //     quality: 0.98
+      //   },
+      //   jsPDF: {
+      //     unit: "in",
+      //     format: "letter",
+      //     orientation: "portrait",
+      //   },
+      // }
 
-      html2pdf().set(opt).from(item).save()
+      // html2pdf().set(opt).from(item).save()
     }
     const queryString = window.location.search;
     let withAspas = queryString.replaceAll('%22', '"')
@@ -1477,4 +1484,4 @@
   </script>
 </body>
 </html>
-  <!-- <button id="unshow_button" style="bottom: -8.125rem; left: 20rem; position: absolute; background-color: #E95340; outline: none; border: none; border-radius: none; cursor: pointer; color: white; font-weight: bold; font-size: 1.125rem; padding: 1.25rem 2.5rem; border-radius: 0.3125rem; margin-top: 3.125rem;" onclick="downloadPdf()">Download PDF</button> -->
+  <button id="unshow_button" style="bottom: -7.125rem; left: 17rem; margin-bottom: 30px; position: absolute; background-color: #E95340; outline: none; border: none; border-radius: none; cursor: pointer; color: white; font-weight: bold; font-size: 1.125rem; padding: 1.25rem 2.5rem; border-radius: 0.3125rem; margin-top: 3.125rem;" onclick="downloadPdf()">Download PDF</button>
