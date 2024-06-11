@@ -1134,8 +1134,11 @@
   </style>
 </head>
 
-<body id="content_body" style="position: relative; display: flex;
-justify-content: center; align-items: center;">
+<body id="content_body" style="position: relative;">
+    <div style="position: absolute; z-index: 3;  right: 100px;
+    top: 10px;" class="line">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAASNJREFUeF7t0rENwjAURVFblOxHySgUGYUy+6VEIM9whOTipr/W18mbY+Pveo/XOu/+HMeuZ85dD1t3BYh/J8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0wQBTAvAUGiAKYt8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0wQBTAvAUGiAKYt8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0wQBTAvAUGiAKYt8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0wQBTAvAUGiAKYt8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0QAb/nuK0n5mN88Km/5T8+mPBRtGCbogAAAABJRU5ErkJggg==" style=" height: 300px; width: 100px; transform: rotate(90deg);" alt="">
+    </div>
   <div id="get_height" style="position: absolute; left: 0; background-color: white;">
     <!-- group: svg -->
     <div class="shape group svg-76d1b58ef118">
@@ -1161,9 +1164,6 @@ justify-content: center; align-items: center;">
       </svg>
     </div>
     <!-- rect: image -->
-    <div>
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAASNJREFUeF7t0rENwjAURVFblOxHySgUGYUy+6VEIM9whOTipr/W18mbY+Pveo/XOu/+HMeuZ85dD1t3BYh/J8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0wQBTAvAUGiAKYt8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0wQBTAvAUGiAKYt8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0wQBTAvAUGiAKYt8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0wQBTAvAUGiAKYt8AAUQDzFhggCmDeAgNEAcxbYIAogHkLDBAFMG+BAaIA5i0QAb/nuK0n5mN88Km/5T8+mPBRtGCbogAAAABJRU5ErkJggg==" style="position: absolute; height: 10%; width: 120px; right: 100px; top: 0px; transform: rotate(90deg);" alt="">
-    </div>
     <div>
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAECCAYAAAD3mldFAAABJklEQVR4Ae2X0Q2CMBRFm0gTPxnBERyBlD3sG4kNGIkRGIERNNVcTBQRfB/+nCakX++2pfcdLiG2+ep5gqe41CLAO8AHjyakF+gFeoFe0DcVHsADeAAP4MHzJwUmwkSYCBNhIkyUB+ABPJAXyAfkA3gAD+AB+UAegAfwQF4gH5AP4AE8gAfkA3kAHsADeYF8QD6AB/AAHpAP5AF4AA/kBfIB+QAewAN4QD6QB+ABPJAXyAfkA3gAD+AB+UAegAfwQF74ez6YvDsYvAK9TyCZuQRCY7VHoA9l6D73zsfGTg4B6+7FP+0g5XEu3i2Q8jhvXSqbz57yGBs7q26eNwksrSyF7wLW1eW+P40lgSrlKbaX7u28SyJFoBRUbR5iyv0hma2u+CJyA8S3Q5QVqL0TAAAAAElFTkSuQmCC" alt="" class="image-76ced4e82745">
     </div>
@@ -1344,24 +1344,6 @@ justify-content: center; align-items: center;">
   <script>
     function downloadPdf() {
     window.print()
-      let photo;
-      // const item = document.getElementById('content_body')
-      
-      // var opt = {
-      //   margin: 0,
-      //   filename: "curriculum.pdf",
-      //   html2canvas: {
-      //     scale: 2,
-      //     quality: 0.98
-      //   },
-      //   jsPDF: {
-      //     unit: "in",
-      //     format: "letter",
-      //     orientation: "portrait",
-      //   },
-      // }
-
-      // html2pdf().set(opt).from(item).save()
     }
     const queryString = window.location.search;
     let withAspas = queryString.replaceAll('%22', '"')
