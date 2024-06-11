@@ -1470,22 +1470,26 @@
     let skillsHeight = document.getElementById('to_brake-hobbies').offsetTop
     let languagesHeight = document.getElementById('to_brake-languages').clientHeight
     let expDiv = document.getElementById('expid2').offsetTop
-    let expDiv4 = JSON.parse(experiences).length >= 4 ? document.getElementById('expid4').offsetTop : 0
-    let expDiv6 = JSON.parse(experiences).length >= 6 ? document.getElementById('expid6').offsetTop : 0
 
     if (JSON.parse(experiences).length > 2 && expDiv > 380) {
       let el = document.getElementById('expid2')
       el.id = 'break_xp2'
     }
 
-    if (JSON.parse(experiences).length > 3 && expDiv4 > 1050) {
-      let element = document.getElementById('expid4')
-      element.id = 'break_xp2'
+    if (JSON.parse(experiences).length >= 4) {
+      let expDiv4 = document.getElementById('expid4').offsetTop
+      if (expDiv4 > 1050) {
+        let element = document.getElementById('expid4')
+        element.id = 'break_xp2'
+      }
     }
 
-    if (JSON.parse(experiences).length > 5 && expDiv6 > 1850) {
-      let element = document.getElementById('expid6')
-      element.id = 'break_xp2'
+    if (JSON.parse(experiences).length >= 6) {
+      let expDiv6 = document.getElementById('expid6').offsetTop 
+      if ( expDiv6 > 1850) {
+        let element = document.getElementById('expid6')
+        element.id = 'break_xp2'
+      }
     }
 
     if(skillsHeight > 300) {
