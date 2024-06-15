@@ -1319,7 +1319,7 @@
     </div>
     <!-- circle: Ellipse -->
     <div class="shape circle ellipse-76cfac40a638"
-      style="width: 129px; height: 129px; border: 1px solid black; border-radius: 50%;" id="user_photo">
+      style="width: 129px; height: 129px; border: 7px solid rgb(5, 67, 95); border-radius: 50%;" id="user_photo">
 
     </div>
     <!-- group: svg -->
@@ -1359,12 +1359,12 @@
   </div>
   <script>
     function downloadPdf() {
-      let expDiv = document.getElementById('expid2').offsetTop
+      
     if (JSON.parse(experiences).length >= 2 && expDiv > 348) {
+      let expDiv = document.getElementById('expid2').offsetTop
       let el = document.getElementById('expid2')
       el.className = 'break_xp2'
     }
-
 
     if (JSON.parse(experiences).length >= 4) {
       let expDiv4 = document.getElementById('expid4').offsetTop
@@ -1393,6 +1393,17 @@
       window.print()
     }
     const queryString = window.location.search;
+    const queryImageString = window.location.search;
+
+    const urlImageParams = new URLSearchParams(queryImageString)
+    let img = document.createElement('img')
+    let credential = urlImageParams.get('X-Amz-Credential')?.replaceAll('+', '%2B')?.replaceAll('=/', '%3D%2F')?.replaceAll('/', '%2F')
+    let date = urlImageParams.get('X-Amz-Date')
+    let expires = urlImageParams.get('X-Amz-Expires')
+    let amzSignature = urlImageParams.get('X-Amz-Signature')
+    let signedHeaders = urlImageParams.get('X-Amz-SignedHeaders')
+    let photo = urlImageParams.get('photo')
+
     let withAspas = queryString.replaceAll('%22', '"')
       .replaceAll('%20', ' ')
       .replaceAll('%C3%A7', 'ç')
@@ -1423,25 +1434,24 @@
     let languages = urlParams.get('languages')
     let skills = urlParams.get('skills')
     let experiences = urlParams.get('experiences')
-    let photo = urlParams.get('photo')
     let policy = urlParams.get('Policy')
     let signature = urlParams.get('Signature')
     let keyPair = urlParams.get('Key-Pair-Id')
     let educations = urlParams.get('educations')
+    let photoInDevelope = urlParams.get('photo')
     let list = document.getElementById('list_specific')
     let listLanguages = document.getElementById('list_languages')
     let listSkills = document.getElementById('list_skills')
     let listExperiences = document.getElementById('list_experiences')
     let listEducations = document.getElementById('list_educations')
     let photoId = document.getElementById('user_photo')
-    let img = document.createElement('img')
 
-    img.src = `${photo}&Policy=${policy}&Signature=${signature}&Key-Pair-Id=${keyPair}`
+     img.src = photo.includes('files') ? `https://budibase.rwinteractive.tech${photo}&X-Amz-Credential=${credential}&X-Amz-Date=${date}&X-Amz-Expires=${expires}&X-Amz-Signature=${amzSignature}&X-Amz-SignedHeaders=${signedHeaders}` : `${photoInDevelope}&Policy=${policy}&Signature=${signature}&Key-Pair-Id=${keyPair}`
 
     specificsSkills.forEach(el => {
       let createSpecific = document.createElement('span')
       createSpecific.style.whiteSpace = 'nowrap'
-      createSpecific.innerText = el + ';'
+      createSpecific.innerText = el === '' ? '-' : el + ';'
 
       list.appendChild(createSpecific)
     })
@@ -1524,7 +1534,6 @@
     let languagesHeight = document.getElementById('to_brake-languages').clientHeight
 
     img.style.borderRadius = '50%'
-    img.style.border = '7px solid #05435F'
     img.style.width = '100%'
     img.style.height = '100%'
     img.style.position = 'absolute'
