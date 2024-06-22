@@ -1360,10 +1360,12 @@
   <script>
     function downloadPdf() {
       
-    if (JSON.parse(experiences).length >= 2 && expDiv > 348) {
+    if (JSON.parse(experiences).length >= 2) {
       let expDiv = document.getElementById('expid2').offsetTop
-      let el = document.getElementById('expid2')
-      el.className = 'break_xp2'
+      if(expDiv > 348) {
+        let el = document.getElementById('expid2')
+        el.className = 'break_xp2'
+      }
     }
 
     if (JSON.parse(experiences).length >= 4) {
@@ -1381,6 +1383,9 @@
         element.className = 'break_xp2'
       }
     }
+
+    let skillsHeight = document.getElementById('to_brake-hobbies').offsetTop
+    let languagesHeight = document.getElementById('to_brake-languages').clientHeight
 
     if (skillsHeight > 300) {
       let el = document.getElementById('to_brake-hobbies')
@@ -1529,9 +1534,6 @@
 
       listLanguages.appendChild(createSpecific)
     })
-
-    let skillsHeight = document.getElementById('to_brake-hobbies').offsetTop
-    let languagesHeight = document.getElementById('to_brake-languages').clientHeight
 
     img.style.borderRadius = '50%'
     img.style.width = '100%'
