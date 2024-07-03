@@ -37,8 +37,7 @@ function downloadPdf() {
   }
   let body = document.getElementById('content_body')
 
-  window.focus();
-  window.print();
+  print();
 }
 const queryString = window.location.search;
 const queryImageString = window.location.search;
@@ -104,6 +103,9 @@ img.src = photo.includes("files")
   : `${photoInDevelope}&Policy=${policy}&Signature=${signature}&Key-Pair-Id=${keyPair}`;
 
 specificsSkills.forEach((el) => {
+  if(specificsSkills.length === 1 && el === '') {
+    document.getElementById('to_brake-spec').style.display = 'none'
+  }
   let createSpecific = document.createElement("span");
   createSpecific.style.whiteSpace = "nowrap";
   createSpecific.innerText = el === "" ? "-" : el + ";";
@@ -144,6 +146,12 @@ JSON.parse(experiences).forEach((el) => {
 });
 
 JSON.parse(educations).forEach((el) => {
+  if(JSON.parse(educations).length === 1) {
+    if(el.start_date === null && el.end_date === null) {
+      document.getElementById('to_brake-educations').style.display = 'none'
+      document.getElementById('break').style.display = 'none'
+    }
+  }
   let div = document.createElement("div");
 
   let degree = document.createElement("h3");
