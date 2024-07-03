@@ -35,7 +35,6 @@ function downloadPdf() {
     let el = document.getElementById("to_brake-languages");
     el.classList.add("break_xp2");
   }
-  let body = document.getElementById('content_body')
 
   print();
 }
@@ -208,3 +207,5 @@ document.getElementById("bio_profile").innerText = bio;
 document.getElementById("role").innerText = role === "Other" ? otherRole : role;
 const item = document.getElementById("content_body");
 item.style.height = document.getElementById("get_height").clientHeight + `px`;
+  let height = document.getElementById('height_content')
+  height.clientHeight > 880 ? height.style.height = height.clientHeight : height.style.height = '880px'
