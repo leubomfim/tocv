@@ -1,42 +1,53 @@
+let actualHeight = ''
 function downloadPdf() {
-  if (JSON.parse(experiences).length >= 2) {
-    let expDiv = document.getElementById("expid2").offsetTop;
-    if (expDiv > 348) {
-      let el = document.getElementById("expid2");
-      el.className = "break_xp2";
-    }
-  }
+  // if (JSON.parse(experiences).length >= 2) {
+  //   let expDiv = document.getElementById("expid2").offsetTop;
+  //   if (expDiv > 348) {
+  //     let el = document.getElementById("expid2");
+  //     el.className = "break_xp2";
+  //   }
+  // }
 
-  if (JSON.parse(experiences).length >= 4) {
-    let expDiv4 = document.getElementById("expid4").offsetTop;
-    if (expDiv4 > 1050) {
-      let element = document.getElementById("expid4");
-      element.className = "break_xp2";
-    }
-  }
+  // if (JSON.parse(experiences).length >= 4) {
+  //   let expDiv4 = document.getElementById("expid4").offsetTop;
+  //   if (expDiv4 > 1050) {
+  //     let element = document.getElementById("expid4");
+  //     element.className = "break_xp2";
+  //   }
+  // }
 
-  if (JSON.parse(experiences).length >= 6) {
-    let expDiv6 = document.getElementById("expid6").offsetTop;
-    if (expDiv6 > 1850) {
-      let element = document.getElementById("expid6");
-      element.className = "break_xp2";
-    }
-  }
+  // if (JSON.parse(experiences).length >= 6) {
+  //   let expDiv6 = document.getElementById("expid6").offsetTop;
+  //   if (expDiv6 > 1850) {
+  //     let element = document.getElementById("expid6");
+  //     element.className = "break_xp2";
+  //   }
+  // }
 
-  let skillsHeight = document.getElementById("to_brake-hobbies").offsetTop;
-  let languagesHeight =
-    document.getElementById("to_brake-languages").clientHeight;
+  // let skillsHeight = document.getElementById("to_brake-hobbies").offsetTop;
+  // let languagesHeight =
+  //   document.getElementById("to_brake-languages").clientHeight;
 
-  if (skillsHeight > 300) {
-    let el = document.getElementById("to_brake-hobbies");
-    el.classList.add("break_xp2");
+  // if (skillsHeight > 300) {
+  //   let el = document.getElementById("to_brake-hobbies");
+  //   el.classList.add("break_xp2");
+  // }
+  // if (languagesHeight > 500) {
+  //   let el = document.getElementById("to_brake-languages");
+  //   el.classList.add("break_xp2");
+  // }
+  let height = document.getElementById('height_content')
+  if(height.clientHeight > 1000 && height.clientHeight < 1400) {
+    let elementid = document.querySelectorAll("#expid");
+    elementid.forEach(el => {
+      if(el.getBoundingClientRect().bottom > 400 && el.getBoundingClientRect().bottom < 550) {
+        el.className = 'break_xp2'
+      }
+    })
   }
-  if (languagesHeight > 500) {
-    let el = document.getElementById("to_brake-languages");
-    el.classList.add("break_xp2");
-  }
-
+  height.style.height = height.clientHeight > 950 ? '2080px' : '950px'
   print();
+  height.style.height = actualHeight + 'px'
 }
 const queryString = window.location.search;
 const queryImageString = window.location.search;
@@ -96,7 +107,6 @@ let listSkills = document.getElementById("list_skills");
 let listExperiences = document.getElementById("list_experiences");
 let listEducations = document.getElementById("list_educations");
 let photoId = document.getElementById("user_photo");
-
 img.src = photo.includes("files")
   ? `https://budibase.rwinteractive.tech${photo}&X-Amz-Credential=${credential}&X-Amz-Date=${date}&X-Amz-Expires=${expires}&X-Amz-Signature=${amzSignature}&X-Amz-SignedHeaders=${signedHeaders}`
   : `${photoInDevelope}&Policy=${policy}&Signature=${signature}&Key-Pair-Id=${keyPair}`;
@@ -123,7 +133,7 @@ JSON.parse(experiences).forEach((el) => {
   title.style.margin = "0";
   title.style.paddingBottom = "5px";
 
-  div.id = "expid" + el.id;
+  div.id = "expid";
 
   company.innerText = el.company;
   company.style.margin = "0";
@@ -209,3 +219,4 @@ const item = document.getElementById("content_body");
 item.style.height = document.getElementById("get_height").clientHeight + `px`;
   let height = document.getElementById('height_content')
   height.clientHeight > 880 ? height.style.height = height.clientHeight : height.style.height = '880px'
+  actualHeight = height.clientHeight
