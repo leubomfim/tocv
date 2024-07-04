@@ -142,7 +142,7 @@ JSON.parse(experiences).forEach((el) => {
   description.style.margin = "0";
   description.style.textAlign = "justify";
 
-  date.innerText = `${el.start_date} - ${el.end_date}`;
+  date.innerText = `${el.start_date} - ${el.current === true ? 'Current' : el.end_date}`;
   date.style.margin = "0";
   date.style.paddingBottom = "10px";
 
