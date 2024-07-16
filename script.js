@@ -14,11 +14,15 @@ function downloadPdf() {
   height.style.height = actualHeight + 'px'
 }
 const queryString = window.location.search;
-const queryImageString = decodeURI(window.location.search);
+const queryImageString = window.location.search;
 
 const urlImageParams = new URLSearchParams(queryImageString);
 let img = document.createElement("img");
-let credential = urlImageParams.get("X-Amz-Credential")
+let credential = urlImageParams
+  .get("X-Amz-Credential")
+  ?.replaceAll("+", "%2B")
+  ?.replaceAll("=/", "%3D%2F")
+  ?.replaceAll("/", "%2F");
 let date = urlImageParams.get("X-Amz-Date");
 let expires = urlImageParams.get("X-Amz-Expires");
 let amzSignature = urlImageParams.get("X-Amz-Signature");
@@ -155,9 +159,9 @@ img.style.top = "0";
 photoId.appendChild(img);
 
 document.getElementById("name").innerText = fullName;
+document.title = "Curriculo " + fullName;
 document.getElementById("bio_profile").innerText = bio;
 document.getElementById("role").innerText = role === "Other" ? otherRole : role;
-document.title = "Curriculo " + fullName;
 
 const item = document.getElementById("content_body");
 item.style.height = document.getElementById("get_height").clientHeight + `px`;
