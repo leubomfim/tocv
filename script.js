@@ -54,9 +54,10 @@ let listSkills = document.getElementById("list_skills");
 let listExperiences = document.getElementById("list_experiences");
 let listEducations = document.getElementById("list_educations");
 let photoId = document.getElementById("user_photo");
-img.src = photo.includes("files")
-  ? `https://budibase.rwinteractive.tech${photo}&X-Amz-Credential=${credential}&X-Amz-Date=${date}&X-Amz-Expires=${expires}&X-Amz-Signature=${amzSignature}&X-Amz-SignedHeaders=${signedHeaders}`
-  : `${photoInDevelope}&Policy=${policy}&Signature=${signature}&Key-Pair-Id=${keyPair}`;
+// .includes("files")
+//   ? `https://budibase.rwinteractive.tech${photo}&X-Amz-Credential=${credential}&X-Amz-Date=${date}&X-Amz-Expires=${expires}&X-Amz-Signature=${amzSignature}&X-Amz-SignedHeaders=${signedHeaders}`
+//   : `${photoInDevelope}&Policy=${policy}&Signature=${signature}&Key-Pair-Id=${keyPair}`;
+img.src = photo
 
 specificsSkills.forEach((el) => {
   if(specificsSkills.length === 1 && el === '') {
